@@ -1,17 +1,35 @@
 aid: fyllo
 name: Semasio
-description: 'Semasio is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Semasio is a Hamburg, Germany advertising-technology company whose semantic
+  targeting platform builds audience, contextual and brand-fit segments for brands,
+  agencies and DSPs across roughly 30 languages and 50 countries. Founded in 2010,
+  it was acquired in 2022 by Casters Holdings, Inc. operating under the Fyllo brand;
+  the combined business traded as Fyllo|Semasio, rebranded to Semasio in April 2024,
+  and was acquired by Samba TV on 31 October 2024. Products include Audience Targeting,
+  Audience Extension, Contextual Targeting, ContextualPLUS, Brand Fit, Interactive
+  Screens, HypertailPMP and the Semasio Factory data onboarding and modeling service.
+  Semasio operates a login-only platform (uip.semasio.net) behind an authentik single
+  sign-on host and publishes no public developer program, API reference, SDK or machine-readable
+  specification.'
+image: https://cdn.prod.website-files.com/65f445b220ec08022f24d171/661d908d87157eb6fe65f1bd_opengraph-global.png
 url: https://raw.githubusercontent.com/api-evangelist/fyllo/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
 x-tier: stub
 x-tier-reason: harvest
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-08-16'
 modified: '2026-08-16'
 tags:
 - Company
+- Advertising
+- Marketing
+- AdTech
+- Audience Targeting
+- Contextual Advertising
+- Data
+- Segments
+- Programmatic
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +37,57 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/fyllo-domain-security.yml
+- type: Conformance
+  url: conformance/fyllo-conformance.yml
+- type: LLMsTxt
+  url: llms/fyllo-llms.txt
+- type: Plans
+  url: plans/fyllo-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/fyllo-rate-limits.yml
 - type: Website
+  url: https://www.semasio.com/
+- type: Blog
+  url: https://www.semasio.com/resources/blog
+- type: Support
+  url: https://www.semasio.com/contact/general
+- type: TermsOfService
+  url: https://www.semasio.com/legal/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://www.semasio.com/legal/semasio-privacy-policy
+- type: Newsroom
+  url: https://www.semasio.com/company/newsroom
+- type: About
+  url: https://www.semasio.com/company/about
+- type: LinkedIn
+  url: https://www.linkedin.com/company/semasio/
+- type: SecondaryMarketListing
   url: https://forgeglobal.com/fyllo_stock/
+x-enrichment:
+  date: '2026-08-16'
+  status: minimal
+  artifacts_added: 6
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Semasio's entire 324-page sitemap is marketing, legal, case-study and podcast content
+    with no developer, API or documentation path, and the only non-marketing hosts it
+    operates — the uip.semasio.net platform UI, which serves a disallow-all robots.txt, and
+    an authentik single sign-on at auth.semasio.net — return 404 for every OpenAPI, GraphQL,
+    MCP and agent-card path probed.
+  evidence:
+  - url: https://www.semasio.com/sitemap.xml
+    status: 200
+  - url: https://uip.semasio.net/openapi.json
+    status: 404
+  - url: https://uip.semasio.net/graphql
+    status: 404
+  - url: https://www.semasio.com/.well-known/agent-card.json
+    status: 404
+  - url: https://www.semasio.com/llms.txt
+    status: 404
+  checked: '2026-08-16'
