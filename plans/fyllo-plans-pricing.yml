@@ -1,0 +1,22 @@
+generated: '2026-08-16'
+method: searched
+source: https://www.semasio.com/
+docs: null
+plan_count: 0
+plans: []
+note: >-
+  Semasio publishes no pricing, plan, tier or rate-card page. The full 324-URL sitemap at
+  https://www.semasio.com/sitemap.xml contains no /pricing, /plans or /packages path, and the
+  site's only commercial calls to action are the contact and demo-request forms
+  (https://www.semasio.com/contact/general, https://www.semasio.com/contact/demo). Commercial
+  terms are set per insertion order — the published Semasio Platform Terms
+  (https://www.semasio.com/legal/terms/semasio-platform-terms) and the media IO template
+  (https://www.semasio.com/legal/io-template-media) define fees by reference to a signed order
+  form rather than a public price list. Recorded as an honest zero, not an unchecked field.
+evidence:
+- url: https://www.semasio.com/sitemap.xml
+  status: 200
+  finding: no pricing/plans URL present among 324 pages
+- url: https://www.semasio.com/contact/demo
+  status: 200
+  finding: demo-request form stands in for published pricing

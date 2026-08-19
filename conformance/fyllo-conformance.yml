@@ -1,0 +1,74 @@
+generated: '2026-08-16'
+method: searched
+source: https://www.semasio.com/company/newsroom
+note: >-
+  Semasio publishes no OpenAPI, AsyncAPI, GraphQL SDL or any other machine-readable contract,
+  so none of the API-level conformance assertions below can be derived from a spec — every
+  api_standards entry is recorded as unknown rather than false, because absence of a contract
+  is absence of evidence, not evidence of non-conformance. The organizational entries are
+  searched from the company's own published pages.
+api_standards:
+- id: openapi
+  conforms: false
+  evidence: no OpenAPI or Swagger document served on any Semasio host (probed 2026-08-16)
+- id: asyncapi
+  conforms: false
+  evidence: no AsyncAPI document and no published webhook or event catalog
+- id: graphql
+  conforms: false
+  evidence: /graphql returns 404 on uip.semasio.net; no GraphQL endpoint advertised
+- id: oauth2
+  conforms: unknown
+  evidence: >-
+    auth.semasio.net runs authentik, which is an OAuth2/OIDC provider, but discovery is
+    per-application (/application/o/<slug>/.well-known/openid-configuration) and no
+    application slug is publicly enumerable; the well-known probe 404s anonymously.
+- id: oidc
+  conforms: unknown
+  evidence: same as oauth2 — authentik SSO present, no anonymously reachable discovery document
+- id: rfc9457-problem-details
+  conforms: unknown
+  evidence: no contract to inspect
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: >-
+    the only 200 on /.well-known/security.txt is the upstream authentik vendor default on
+    auth.semasio.net (contact security@goauthentik.io, expired 2024-01-01); Semasio's own
+    hosts 404
+organizational:
+- id: soc2-type1
+  conforms: true
+  status: stale
+  evidence: >-
+    Company newsroom announcement of a completed SOC 2 Type 1 examination by Schellman &
+    Company, LLC, dated 15 September 2021 and published under the predecessor Fyllo brand.
+    No renewal, Type 2 report, bridge letter or trust center has been published since, and no
+    trust/compliance page exists on semasio.com — so this is recorded as a historical claim,
+    not a current compliance program, and no Compliance pointer is wired into apis.yml.
+  source: https://www.semasio.com/newsroom/fyllo-announces-successful-completion-of-soc-2-examination
+- id: gdpr
+  conforms: true
+  evidence: >-
+    Publishes an EEA Data Protection Addendum, a global DPA, an APAC DPA and an international
+    data-subject-request page — the posture expected of a Hamburg-headquartered data controller.
+  source: https://www.semasio.com/legal/semasio-eea-data-protection-addendum
+- id: us-state-privacy
+  conforms: true
+  evidence: >-
+    Publishes a State Privacy Law Addendum, a Privacy Choices opt-out surface and ad-tech
+    industry opt-out links (data-broker disclosures).
+  source: https://www.semasio.com/legal/semasio-state-privacy-law-addendum
+- id: iso-27001
+  conforms: unknown
+  evidence: not claimed on any published Semasio page
+- id: pci-dss
+  conforms: false
+  evidence: not applicable — no payment surface
+evidence:
+- url: https://www.semasio.com/newsroom/fyllo-announces-successful-completion-of-soc-2-examination
+  status: 200
+- url: https://www.semasio.com/legal/privacy-policies
+  status: 200
+- url: https://auth.semasio.net/.well-known/security.txt
+  status: 200
+  finding: upstream authentik default, not Semasio's

@@ -1,0 +1,69 @@
+generated: '2026-08-16'
+method: probed
+source: live GET of /.well-known/* on every live Semasio host
+note: >-
+  Every canonical /.well-known/ document is absent on Semasio's own surfaces. The one
+  HTTP 200 recorded below is NOT Semasio's — auth.semasio.net serves the stock security.txt
+  that ships with authentik (the self-hosted SSO product running on that host): it names
+  security@goauthentik.io as the contact, points Policy at docs.goauthentik.io, and expired
+  on 1 January 2024. It is the software vendor's document, not the provider's, so no
+  WellKnown or SecurityTxt pointer is wired into apis.yml from this probe.
+hosts:
+- host: https://www.semasio.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://uip.semasio.net
+  note: Semasio platform UI; robots.txt disallows all, every probed path 404s.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://auth.semasio.net
+  note: authentik single sign-on host.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/plain
+    third_party: true
+    owner: goauthentik.io (upstream authentik default, expired 2024-01-01)
+    saved: false
+  - path: /.well-known/openid-configuration
+    status: 404
+    note: >-
+      authentik publishes OIDC discovery per application at
+      /application/o/<app-slug>/.well-known/openid-configuration; no application slug is
+      publicly enumerable, so no discovery document is reachable anonymously.
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404

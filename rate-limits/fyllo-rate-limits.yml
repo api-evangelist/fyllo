@@ -1,0 +1,22 @@
+generated: '2026-08-16'
+method: searched
+source: https://www.semasio.com/
+docs: null
+limit_count: 0
+rate_limits: []
+headers: []
+note: >-
+  No rate limits are documented because no public API is documented. Semasio publishes no
+  developer portal, API reference or machine-readable specification, so there is no throttling
+  contract, no window/burst figure and no response-header signal (X-RateLimit-*, RateLimit-*,
+  Retry-After) to record. The only Semasio-operated non-marketing hosts reachable anonymously
+  are the platform UI (uip.semasio.net, robots.txt disallow-all, every spec path 404) and the
+  authentik SSO host (auth.semasio.net), neither of which returns a rate-limit header on an
+  unauthenticated request. Recorded as an honest zero, not an unchecked field.
+evidence:
+- url: https://uip.semasio.net/robots.txt
+  status: 200
+  finding: 'User-agent: * / Disallow: /'
+- url: https://uip.semasio.net/openapi.json
+  status: 404
+  finding: no specification served by the platform host
