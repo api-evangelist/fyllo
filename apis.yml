@@ -11,6 +11,17 @@ description: 'Semasio is a Hamburg, Germany advertising-technology company whose
   Semasio operates a login-only platform (uip.semasio.net) behind an authentik single
   sign-on host and publishes no public developer program, API reference, SDK or machine-readable
   specification.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://cdn.prod.website-files.com/65f445b220ec08022f24d171/661d908d87157eb6fe65f1bd_opengraph-global.png
 url: https://raw.githubusercontent.com/api-evangelist/fyllo/refs/heads/main/apis.yml
 x-type: company
